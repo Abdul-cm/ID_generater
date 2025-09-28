@@ -1,0 +1,63 @@
+# ID Card System - Git Ignore File
+
+# Sensitive Files
+database/security_upgrade.php
+install.php
+*.log
+
+# Uploaded Files (User Content)
+uploads/*
+!uploads/.gitkeep
+
+# Environment Files
+.env
+.env.local
+.env.production
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+
+# Backup Files
+*.bak
+*.backup
+*_backup.*
+
+# Database Files
+*.sql.bak
+*.db
+*.sqlite
+
+# Log Files
+logs/
+*.log
+
+# Node Modules (if any)
+node_modules/
+
+# Composer (if any)
+vendor/
+
+# Cache Files
+cache/
+*.cache
+
+# Session Files
+sessions/
+
+# Error Logs
+error_log
+error.log
