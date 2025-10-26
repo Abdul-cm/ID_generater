@@ -114,8 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Main Content -->
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card">
+            <div class="col-md-8 col-lg-5 col-xl-4">
+                <div class="card auth-card">
                     <div class="card-header">
                         <h4 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>Login</h4>
                     </div>

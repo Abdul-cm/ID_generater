@@ -98,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Main Content -->
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-lg-5">
-                <div class="card">
+            <div class="col-md-8 col-lg-5 col-xl-4">
+                <div class="card auth-card">
                     <div class="card-header">
                         <h4 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>Admin Login</h4>
                     </div>
@@ -139,5 +139,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

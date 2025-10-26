@@ -84,22 +84,64 @@ body {
     box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1000;
 }
 
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     letter-spacing: -0.02em;
     color: #fff !important;
     text-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .navbar-brand:hover {
     transform: translateY(-1px);
     text-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+/* Navbar dropdown styling */
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+.navbar .dropdown-menu {
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.navbar .dropdown-item {
+    padding: 0.6rem 1.5rem;
+    color: #2d3748;
+    transition: all 0.2s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.navbar .dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
 
 .hero-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
@@ -150,6 +192,12 @@ body {
     backdrop-filter: blur(20px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-card {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card:hover {
     transform: translateY(-8px) scale(1.02);
@@ -418,7 +466,6 @@ body {
 @media print {
     * {
         -webkit-print-color-adjust: exact !important;
-        color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
     
@@ -974,7 +1021,8 @@ section h2::after {
     }
     
     .navbar-brand {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
+        max-width: 200px;
     }
     
     h1 {
