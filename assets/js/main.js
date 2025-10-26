@@ -22,10 +22,14 @@ class FormValidator {
             form.addEventListener('submit', (e) => this.validateForm(e));
         });
 
-        // Real-time password strength indicator
+        // Real-time password strength indicator (only for registration forms)
         const passwordInputs = document.querySelectorAll('input[type="password"]');
         passwordInputs.forEach(input => {
-            if (input.name === 'password') {
+            // Only show strength meter if there's a confirm_password field (registration)
+            const form = input.closest('form');
+            const hasConfirmPassword = form && form.querySelector('input[name="confirm_password"]');
+            
+            if (input.name === 'password' && hasConfirmPassword) {
                 input.addEventListener('input', (e) => this.checkPasswordStrength(e.target));
             }
         });
@@ -65,9 +69,12 @@ class FormValidator {
             }
         });
 
-        // Password validation
+        // Password validation (only for registration forms, not login)
         const passwordField = form.querySelector('input[name="password"]');
-        if (passwordField && passwordField.value) {
+        const confirmPasswordField = form.querySelector('input[name="confirm_password"]');
+        
+        // Only validate password complexity for registration (has confirm_password field)
+        if (passwordField && passwordField.value && confirmPasswordField) {
             const passwordErrors = this.validatePassword(passwordField.value);
             if (passwordErrors.length > 0) {
                 isValid = false;
@@ -77,7 +84,6 @@ class FormValidator {
         }
 
         // Password confirmation
-        const confirmPasswordField = form.querySelector('input[name="confirm_password"]');
         if (passwordField && confirmPasswordField) {
             if (passwordField.value !== confirmPasswordField.value) {
                 isValid = false;
