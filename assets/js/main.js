@@ -49,6 +49,12 @@ class FormValidator {
         // Clear previous error messages
         this.clearErrorMessages(form);
 
+        // Check if this is a login form (no confirm_password field)
+        const isLoginForm = !form.querySelector('input[name="confirm_password"]');
+        
+        // Check if this is admin login (has username field instead of email)
+        const isAdminLogin = form.querySelector('input[name="username"]') !== null;
+
         // Validate required fields
         const requiredFields = form.querySelectorAll('[required]');
         requiredFields.forEach(field => {
@@ -59,22 +65,24 @@ class FormValidator {
             }
         });
 
-        // Email validation
-        const emailFields = form.querySelectorAll('input[type="email"]');
-        emailFields.forEach(field => {
-            if (field.value && !this.isValidEmail(field.value)) {
-                isValid = false;
-                errors.push('Please enter a valid email address.');
-                this.markFieldError(field);
-            }
-        });
+        // Email validation (skip for admin login)
+        if (!isAdminLogin) {
+            const emailFields = form.querySelectorAll('input[type="email"]');
+            emailFields.forEach(field => {
+                if (field.value && !this.isValidEmail(field.value)) {
+                    isValid = false;
+                    errors.push('Please enter a valid email address.');
+                    this.markFieldError(field);
+                }
+            });
+        }
 
-        // Password validation (only for registration forms, not login)
+        // Password validation (ONLY for registration forms, NOT for login)
         const passwordField = form.querySelector('input[name="password"]');
         const confirmPasswordField = form.querySelector('input[name="confirm_password"]');
         
         // Only validate password complexity for registration (has confirm_password field)
-        if (passwordField && passwordField.value && confirmPasswordField) {
+        if (passwordField && passwordField.value && confirmPasswordField && !isLoginForm) {
             const passwordErrors = this.validatePassword(passwordField.value);
             if (passwordErrors.length > 0) {
                 isValid = false;
@@ -83,7 +91,7 @@ class FormValidator {
             }
         }
 
-        // Password confirmation
+        // Password confirmation (only if confirm field exists)
         if (passwordField && confirmPasswordField) {
             if (passwordField.value !== confirmPasswordField.value) {
                 isValid = false;
