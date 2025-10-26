@@ -3,6 +3,7 @@
 # Sensitive Files
 database/security_upgrade.php
 install.php
+reset_admin_password.php
 *.log
 
 # Uploaded Files (User Content)
